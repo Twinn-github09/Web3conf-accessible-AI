@@ -34,25 +34,6 @@ function Header() {
           </Typography>
         </Box>
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <FormControlLabel
-            control={
-              <Switch 
-                color="primary"
-                sx={{
-                  '& .MuiSwitch-thumb': {
-                    color: 'var(--neon-blue)'
-                  },
-                  '& .MuiSwitch-track': {
-                    backgroundColor: 'var(--secondary-dark)'
-                  }
-                }}
-              />
-            }
-            label="Dark Mode"
-            sx={{ color: 'var(--text-light)' }}
-          />
-        </Box>
       </Toolbar>
     </AppBar>
   );
