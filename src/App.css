@@ -1,0 +1,124 @@
+/* Dark Theme Color Palette */
+:root {
+  --primary-dark: #121212;
+  --secondary-dark: #1E1E2F;
+  --neon-blue: #00FFFF;
+  --neon-green: #00FF7F;
+  --neon-orange: #FF8C00;
+  --text-light: #E0E0E0;
+  --accent-glow: rgba(0, 255, 255, 0.3);
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-blue) var(--primary-dark);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+  min-height: 100vh;
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--neon-blue);
+  border-radius: 20px;
+}
+
+/* Tab Card Styles */
+.tab-card {
+  background: rgba(30, 30, 47, 0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.1);
+  width: 250px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.tab-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
+  border-color: var(--neon-blue);
+}
+
+/* Input and Form Styles */
+form {
+  background: rgba(30, 30, 47, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 255, 255, 0.1);
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input, form button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(30, 30, 47, 0.7);
+  color: var(--text-light);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+form button {
+  background: linear-gradient(135deg, var(--neon-blue), var(--secondary-dark));
+  color: white;
+  border: 2px solid var(--neon-blue);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tab-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
+  50% { box-shadow: 0 0 20px var(--neon-blue); }
+}
