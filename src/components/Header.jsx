@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import SignLanguageIcon from '@mui/icons-material/SignLanguage';
+import BlurInProps from "./ui/blur-in"
 
 function Header() {
   return (
@@ -13,13 +14,6 @@ function Header() {
     >
       <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <SignLanguageIcon 
-            sx={{ 
-              color: '#1E293B', 
-              fontSize: '2rem',
-              filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.3))'
-            }} 
-          />
           <Typography 
             variant="h5" 
             component="div" 
@@ -30,7 +24,7 @@ function Header() {
               textShadow: '0 0 5px rgba(255, 255, 255, 0.2)'
             }}
           >
-            Sign Language Converter
+            <BlurInProps word='Sign Language Converter' />
           </Typography>
         </Box>
       </Toolbar>
