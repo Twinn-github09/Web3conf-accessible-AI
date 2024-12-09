@@ -163,33 +163,25 @@ function App() {
         >
           <Box 
             sx={{ 
-              height: '100px',
-      
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mb: 4, 
-              p: 10, 
+              height: '90px',
+              textAlign:'center',
+              justifyContent:'center',
+              mb: 10, 
+              p: 3,
+              pl: 50,
               borderRadius: 3,
-              background: 'rgba(255, 255, 255, 0.7)',
+              background: '#F5E2E2',
               boxShadow: '0 15px 35px rgba(154, 166, 178, 0.2)'
             }}
           > 
             
             <VaraText 
               text="Unite Through Signs"
-              fontSize={40}
-              strokeWidth={0.7}
+              fontSize={45}
+              strokeWidth={1}
               sx={{ textAlign: 'center' }}
             />
-            <VaraText 
-              text=" "
-              fontSize={40}
-              strokeWidth={0.7}
-              sx={{ textAlign: 'center' }}
-            />
-           
+        
           </Box>
 
           <Tabs     
