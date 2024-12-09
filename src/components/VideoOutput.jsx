@@ -54,6 +54,7 @@ const VideoOutput = ({ transcript, videoUrl }) => {
             </Typography>
             <Box 
               sx={{ 
+                height: '600px',
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: 2,
@@ -63,7 +64,7 @@ const VideoOutput = ({ transcript, videoUrl }) => {
                 },
               }}
             >
-              <video controls width="100%">
+              <video controls height="600px" width="100%">
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

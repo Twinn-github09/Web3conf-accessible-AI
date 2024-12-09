@@ -1,63 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Root Variables for Consistent Theming */
 :root {
-  --primary-color: #000000;
-  --secondary-color: #6E56CF;
-  --background-color: #666679;
-  --surface-color: #77778b;
+  /* Color Palette */
+  --background-dark: #ded4d4;
+  --background-darker: #1E1E2F;
+  --text-light: #E0E0E0;
+  --text-muted: #A0A0A0;
+
+  /* Neon Color Palette */
+  --neon-blue: #00B0FF;
+  --neon-green: #00E676;
+  --neon-orange: #FF9100;
+  
+  /* Accent Glow */
+  --accent-glow: rgba(0, 176, 255, 0.7);
+
+  /* Shadows and Depth */
+  --shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: #FFFFFF;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #e89905 100%, #17171A 0%);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.glass-effect {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-}
-
-.hover-glow {
-  transition: all 0.2s ease-in-out;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(0, 255, 178, 0.2);
-  transform: translateY(-2px);
-}
-
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-color);
+  background: var(--background-darker);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--neon-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-color);
+  background: var(--accent-glow);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--neon-blue);
+}
+
+/* Input Styles */
+input, textarea {
+  background-color: rgba(30, 30, 47, 0.7);
+  border: 1px solid rgba(0, 176, 255, 0.3);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 176, 255, 0.3);
+}
+
+/* Animation Keyframes */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px var(--accent-glow);
+  }
+  to {
+    text-shadow: 0 0 20px var(--accent-glow);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Utility Classes */
+.glow-text {
+  animation: glow 1.5s infinite alternate;
+}
+
+.pulse-hover:hover {
+  animation: pulse 0.5s ease;
 }
