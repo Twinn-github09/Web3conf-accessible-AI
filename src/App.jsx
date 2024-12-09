@@ -25,6 +25,8 @@ import FileUpload from './components/FileUpload';
 import TextInput from './components/TextInput';
 import VideoOutput from './components/VideoOutput';
 
+import './App.css';
+
 function App() {
   const [tab, setTab] = useState(0);
   const [transcript, setTranscript] = useState('');
