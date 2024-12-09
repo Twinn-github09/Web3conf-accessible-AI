@@ -11,6 +11,9 @@ import {
   IconButton,
   CircularProgress
 } from '@mui/material';
+
+import VaraText from "./components/VaraText";
+
 import { motion } from 'framer-motion';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -160,39 +163,36 @@ function App() {
         >
           <Box 
             sx={{ 
-              textAlign: 'center', 
+              height: '100px',
+      
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
               mb: 4, 
-              p: 3, 
+              p: 10, 
               borderRadius: 3,
               background: 'rgba(255, 255, 255, 0.7)',
               boxShadow: '0 15px 35px rgba(154, 166, 178, 0.2)'
             }}
-          >
-            <Typography 
-              variant="h3" 
-              sx={{ 
-                color: '#1E293B', 
-                mb: 2,
-                fontFamily: 'Montserrat, sans-serif',
-                textShadow: '0 0 10px rgba(154, 166, 178, 0.3)'
-              }}
-            >
-              Unite Through signs
-            </Typography>
-            <Typography 
-              variant="subtitle1" 
-              sx={{ 
-                color: '#475569', 
-                opacity: 0.8,
-                maxWidth: 600,
-                margin: '0 auto'
-              }}
-            >
-              Team-Nooglers
-            </Typography>
+          > 
+            
+            <VaraText 
+              text="Unite Through Signs"
+              fontSize={40}
+              strokeWidth={0.7}
+              sx={{ textAlign: 'center' }}
+            />
+            <VaraText 
+              text=" "
+              fontSize={40}
+              strokeWidth={0.7}
+              sx={{ textAlign: 'center' }}
+            />
+           
           </Box>
 
-          <Tabs
+          <Tabs     
             value={tab}
             onChange={handleTabChange}
             variant="fullWidth"
