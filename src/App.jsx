@@ -11,6 +11,9 @@ import {
   IconButton,
   CircularProgress
 } from '@mui/material';
+
+import VaraText from "./components/VaraText";
+
 import { motion } from 'framer-motion';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -26,8 +29,6 @@ import FileUpload from './components/FileUpload';
 import TextInput from './components/TextInput';
 import VideoOutput from './components/VideoOutput';
 
-import './App.css'
-
 function App() {
   const [tab, setTab] = useState(0);
   const [transcript, setTranscript] = useState('');
@@ -38,7 +39,6 @@ function App() {
     setTab(newValue);
     setIsProcessing(false);
   };
-
 
   const processYouTubeUrl = async (url) => {
     setIsProcessing(true);
@@ -69,6 +69,7 @@ function App() {
       setIsProcessing(false);
     }
   };
+
   const processText = async (text) => {
     setIsProcessing(true);
     let videoUrl; // Declare videoUrl in the outer scope
@@ -117,29 +118,27 @@ function App() {
       setIsProcessing(false);
     }
   };
-  
-
-  // Customize tab icons with neon glow
+  // Customize tab icons with soft glow
   const tabIcons = [
     <YouTubeIcon 
       fontSize="large" 
       sx={{ 
-        color: 'var(--neon-blue)', 
-        filter: 'drop-shadow(0 0 5px var(--neon-blue))' 
+        color: '#9AA6B2', 
+        filter: 'drop-shadow(0 0 3px #BCCCDC)' 
       }} 
     />,
     <CloudUploadIcon 
       fontSize="large" 
       sx={{ 
-        color: 'var(--neon-green)', 
-        filter: 'drop-shadow(0 0 5px var(--neon-green))' 
+        color: '#9AA6B2', 
+        filter: 'drop-shadow(0 0 3px #BCCCDC)' 
       }} 
     />,
     <TextFieldsIcon 
       fontSize="large" 
       sx={{ 
-        color: 'var(--neon-orange)', 
-        filter: 'drop-shadow(0 0 5px var(--neon-orange))' 
+        color: '#9AA6B2', 
+        filter: 'drop-shadow(0 0 3px #BCCCDC)' 
       }} 
     />
   ];
@@ -148,8 +147,8 @@ function App() {
     <Box 
       sx={{ 
         minHeight: '100vh', 
-        background: 'linear-gradient(135deg, #121212 0%, #1E1E2F 100%)',
-        color: 'var(--text-light)',
+        background: `linear-gradient(135deg, #F8FAFC 0%, #D9EAFD 100%)`,
+        color: '#1E293B',
         display: 'flex',
         flexDirection: 'column'
       }}
@@ -164,40 +163,28 @@ function App() {
         >
           <Box 
             sx={{ 
-              textAlign: 'center', 
-              mb: 4, 
-              p: 3, 
+              height: '90px',
+              textAlign:'center',
+              justifyContent:'center',
+              mb: 10, 
+              p: 3,
+              pl: 50,
               borderRadius: 3,
-              background: 'rgba(30, 30, 47, 0.7)',
-              boxShadow: '0 15px 35px rgba(0, 255, 255, 0.1)'
+              background: '#F5E2E2',
+              boxShadow: '0 15px 35px rgba(154, 166, 178, 0.2)'
             }}
-          >
-            <Typography 
-              variant="h3" 
-              sx={{ 
-                color: 'var(--neon-blue)', 
-                mb: 2,
-                fontFamily: 'Montserrat, sans-serif',
-                textShadow: '0 0 20px var(--accent-glow)'
-              }}
-            >
-              Bridging Communication Barriers
-            </Typography>
-            <Typography 
-              variant="subtitle1" 
-              sx={{ 
-                color: 'var(--text-light)', 
-                opacity: 0.8,
-                maxWidth: 600,
-                margin: '0 auto'
-              }}
-            >
-              Team-Nooglers
-            </Typography>
+          > 
+            
+            <VaraText 
+              text="Unite Through Signs"
+              fontSize={45}
+              strokeWidth={1}
+              sx={{ textAlign: 'center' }}
+            />
+        
           </Box>
 
-          {/* Tabs and Input Sections remain similar to previous implementation */}
-          <Tabs
+          <Tabs     
             value={tab}
             onChange={handleTabChange}
             variant="fullWidth"
@@ -206,10 +193,10 @@ function App() {
               '& .MuiTab-root': {
                 textTransform: 'none',
                 fontWeight: 600,
-                color: 'var(--text-light)',
+                color: '#475569',
               },
               '& .Mui-selected': {
-                color: 'var(--neon-blue)',
+                color: '#1E293B',
               },
             }}
           >
@@ -222,8 +209,8 @@ function App() {
                 key={item.label}
                 icon={React.cloneElement(item.icon, { 
                   sx: { 
-                    color: tab === index ? 'var(--neon-blue)' : 'inherit',
-                    filter: tab === index ? 'drop-shadow(0 0 5px var(--neon-blue))' : 'none'
+                    color: tab === index ? '#1E293B' : '#9AA6B2',
+                    filter: tab === index ? 'drop-shadow(0 0 5px #BCCCDC)' : 'none'
                   } 
                 })}
                 label={item.label} 
@@ -252,14 +239,14 @@ function App() {
             />
           </TabPanel>
             
-          {/* Video Output remains the same */}
+          {/* Video Output */}
           {(transcript || videoUrl) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {isProcessing? (
+                {isProcessing ? (
                   <Box 
                     sx={{ 
                       display: 'flex', 
@@ -272,7 +259,7 @@ function App() {
                       color="primary" 
                       size={60} 
                       sx={{
-                        color: 'var(--neon-blue)',
+                        color: '#9AA6B2',
                         '& .MuiCircularProgress-circle': {
                           strokeLinecap: 'round',
                           animation: 'glow 1.5s infinite alternate'
@@ -295,11 +282,11 @@ function App() {
       <Box 
         component="footer" 
         sx={{ 
-          backgroundColor: 'rgba(30, 30, 47, 0.7)', 
-          color: 'var(--text-light)',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)', 
+          color: '#1E293B',
           textAlign: 'center', 
           py: 3,
-          borderTop: '1px solid rgba(0, 255, 255, 0.2)'
+          borderTop: '1px solid rgba(154, 166, 178, 0.2)'
         }}
       >
         <Container maxWidth="lg">
@@ -310,21 +297,21 @@ function App() {
             <IconButton 
               href="https://twitter.com" 
               target="_blank" 
-              sx={{ color: 'var(--neon-blue)' }}
+              sx={{ color: '#9AA6B2' }}
             >
               <TwitterIcon />
             </IconButton>
             <IconButton 
               href="https://linkedin.com" 
               target="_blank" 
-              sx={{ color: 'var(--neon-blue)' }}
+              sx={{ color: '#9AA6B2' }}
             >
               <LinkedInIcon />
             </IconButton>
             <IconButton 
               href="https://github.com" 
               target="_blank" 
-              sx={{ color: 'var(--neon-blue)' }}
+              sx={{ color: '#9AA6B2' }}
             >
               <GitHubIcon />
             </IconButton>
