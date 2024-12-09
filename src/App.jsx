@@ -8,7 +8,8 @@ import {
   Button,
   Card,
   CardContent,
-  IconButton
+  IconButton,
+  CircularProgress
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -25,7 +26,7 @@ import FileUpload from './components/FileUpload';
 import TextInput from './components/TextInput';
 import VideoOutput from './components/VideoOutput';
 
-import './App.css';
+import './App.css'
 
 function App() {
   const [tab, setTab] = useState(0);
@@ -68,21 +69,55 @@ function App() {
       setIsProcessing(false);
     }
   };
-
   const processText = async (text) => {
     setIsProcessing(true);
+    let videoUrl; // Declare videoUrl in the outer scope
     try {
-      console.log('Processing text:', text);
+      console.log("Processing text:", text);
       // Simulated async processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+  
       setTranscript(text);
-      setVideoUrl('/path/to/converted/video.mp4');
+  
+      try {
+        const response = await fetch("http://192.168.117.18:5000/convertToSign", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: text }),
+        });
+  
+        if (!response.ok) {
+          let errorMessage = "Unknown error occurred.";
+          try {
+            const error = await response.json();
+            errorMessage = error.error || errorMessage;
+          } catch (parseError) {
+            console.error("Error parsing response:", parseError);
+          }
+          alert(`Error: ${errorMessage}`);
+          return;
+        }
+  
+        // Create a blob URL for the video
+        const videoBlob = await response.blob();
+        videoUrl = URL.createObjectURL(videoBlob);
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      }
+  
+      if (videoUrl) {
+        setVideoUrl(videoUrl); // Set videoUrl only if successfully created
+      }
     } catch (error) {
-      console.error('Processing error:', error);
+      console.error("Processing error:", error);
     } finally {
       setIsProcessing(false);
     }
   };
+  
 
   // Customize tab icons with neon glow
   const tabIcons = [
