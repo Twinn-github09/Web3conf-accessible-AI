@@ -1,32 +1,32 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Box } from '@mui/material';
-import SignLanguageIcon from '@mui/icons-material/SignLanguage';
-import BlurInProps from "./ui/blur-in"
+import { AppBar, Toolbar, Typography, Box, Switch, FormControlLabel } from '@mui/material';
+import SignLanguageIcon from '@mui/icons-material/SignLanguage'; // Using MUI icon for accessibility
+import SparklesText from "./ui/sparkles-text";
+import WordRotate from "./ui/word-rotate";
+
 
 function Header() {
   return (
     <AppBar 
       position="sticky" 
       sx={{ 
-        background: 'linear-gradient(135deg, #BCCCDC, #9AA6B2)',
-        boxShadow: '0 4px 15px rgba(154, 166, 178, 0.3)'
+        background: '#add8e6',
+        boxShadow: '0 4px 15px rgba(0, 255, 255, 0.1)'
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography 
-            variant="h5" 
-            component="div" 
-            sx={{ 
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              color: '#1E293B',
-              textShadow: '0 0 5px rgba(255, 255, 255, 0.2)'
-            }}
-          >
-            <BlurInProps word='Sign Language Converter' />
-          </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2,pl:75}}>
+          
+          <SparklesText text=" " />
+          <center>
+          <WordRotate
+            className="text-4xl font-bold text-black dark:text-white"
+            words={["Sign Language Converter", "Web3conf Hackathon "]}
+          />
+          </center>
+          <SparklesText text=" " />
         </Box>
+
       </Toolbar>
     </AppBar>
   );

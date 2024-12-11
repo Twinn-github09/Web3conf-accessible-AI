@@ -4,9 +4,8 @@ const YOUTUBE_API_KEY = 'AIzaSyBHBy0k3ZxyPK9epHqUosmrOfWRfQPb-4A'; // Replace wi
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 export const searchYouTubeVideos = async (query) => {
   try {
-    console.log('Search Query:', query); // Debug log
-
-    const response = await axios.get(`${YOUTUBE_API_URL}/search`, {
+  
+      const response = await axios.get(`${YOUTUBE_API_URL}/search`, {
       params: {
         part: 'id',
         maxResults: 20,
